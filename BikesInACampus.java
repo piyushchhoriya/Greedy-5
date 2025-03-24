@@ -8,7 +8,7 @@ possible in the future.
 Once a worker is assigned a bike, we do not backtrack or change assignments.
 
 Time Complexity : As in this question we are using a TreeMap so anything u do with it it sorts so it will take logn.
-Time Complexity : O(mn logn)
+Time Complexity : O(mn logmn)
 Space Complexity : O(mn) -> TreeMap
 
 Steps:
@@ -65,3 +65,8 @@ class BikesInACampus{
     }
 }
 
+No there are multiple steps where we can optimize above problem
+1. If we have already assigned all the workers all the bikes still we are fetching from map and iterating so this can be optimized 
+    by maintaing a variable of size bikes array. and ones we assign we will decrement it and ones it is zero we will break it.
+2. We are using a treemap which takes logn for insertion so instead we can use HashMap and we can maintain 2 variables min max which will hold 
+    the min and max values of keys so that we can iterate from min upto max
