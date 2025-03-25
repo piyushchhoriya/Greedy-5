@@ -74,7 +74,7 @@ class BikesInACampus{
 
 Also the min will be 0 and max will not go above m+n i.e grids x-y
 Time Complexiy : O(mn)
-Space Complexity : O(mn)
+Space Complexity :O(mn)
 
 //Optimal Solution
 import java.util.*;
