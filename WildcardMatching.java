@@ -1,6 +1,6 @@
 For this question there are 2 different solutions
 1. DP based 
-2. Greedy based
+2. Non DP based
 
 //DP based solution
 In this we will create a m*n table and add True or false. 
@@ -45,3 +45,53 @@ class Solution {
         return dp[m][n];
     }
 }
+
+//Non DP Solution
+Time Complexity : O(mn)
+Space Complexity : O(1)
+class Solution {
+    public boolean isMatch(String s, String p) {
+        if(s.equals(p)){
+            return true;
+        }
+        if(p==null || p.length()==0){
+            return false;
+        }
+        int pp = 0;
+        int sp = 0;
+        int sstar=-1;
+        int pstar=-1;
+
+        while(sp < s.length()){
+            if((pp< p.length()) && (s.charAt(sp)== p.charAt(pp) || p.charAt(pp) == '?')){
+                sp++;
+                pp++;
+            }
+            else if((pp< p.length()) && (p.charAt(pp) == '*')){
+                sstar = sp;
+                pstar = pp;
+                pp++;
+            }
+            else if(sstar == -1){
+                return false;
+            }
+            else{
+                sp=sstar;
+                pp=pstar;
+                sp++;
+                sstar=sp;
+                pp++;
+            }
+        }
+
+        while(pp<p.length()){
+            if(p.charAt(pp)!='*'){
+                return false;
+            }
+            pp++;
+        }
+        return true;
+        
+    }
+}
+
